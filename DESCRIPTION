@@ -1,0 +1,11 @@
+Package: decMakeR
+Title: Software package for describing, explaining, simulating and predicting human decision making.
+Version: 0.0.0.9000
+Authors@R: person("Andreas", "Fischer", email = "andreasfischer1985@web.de", role = c("aut", "cre"))
+Description: Software package for describing, explaining, simulating and predicting human decision making.
+Depends: R (>= 3.5.1)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Maintainer: 'Andreas Fischer' <andreasfischer1985@web.de>
+RoxygenNote: 6.1.0
