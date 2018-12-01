@@ -4,7 +4,7 @@
 \alias{pascal}
 \title{Function pascal}
 \usage{
-pascal(p, k)
+pascal(c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100))
 }
 \description{
 Function pascal

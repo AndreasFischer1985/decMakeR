@@ -4,8 +4,8 @@
 \alias{cumulativeProspectTheory}
 \title{Function cumulativeProspectTheory}
 \usage{
-cumulativeProspectTheory(p = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6), k = c(-5,
-  -3, -1, 2, 4, 6), vFun = NULL, w1Fun = NULL, w2Fun = NULL)
+cumulativeProspectTheory(c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100),
+  vFun = NULL, w1Fun = NULL, w2Fun = NULL, plot = T)
 }
 \description{
 Function cumulativeProspectTheory

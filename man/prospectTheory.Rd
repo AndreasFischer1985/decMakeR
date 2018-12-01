@@ -4,7 +4,8 @@
 \alias{prospectTheory}
 \title{Function prospectTheory}
 \usage{
-prospectTheory(p, k, vFun = NULL, wFun = NULL, plot = F)
+prospectTheory(c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100),
+  vFun = NULL, wFun = NULL, plot = T)
 }
 \description{
 Function prospectTheory
