@@ -2,7 +2,7 @@
 #' @export
 
 
-pascal <- function (p, k) 
+pascal <- function (c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100)) 
 {
-    return(sum(p * k))
+    return(sum(p * c))
 }

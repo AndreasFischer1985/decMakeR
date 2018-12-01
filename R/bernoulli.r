@@ -2,7 +2,8 @@
 #' @export
 
 
-bernoulli <- function (p, k, uFun) 
+bernoulli <- function (c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100), uFun = NULL, 
+    plot = T) 
 {
     if (is.null(uFun)) 
         uFun = function(x) {
@@ -10,5 +11,10 @@ bernoulli <- function (p, k, uFun)
             return(u)
         }
     u = uFun
-    return(sum(p * u(k)))
+    if (plot) 
+        x <- seq(-1, 1, length = 100)
+    plot(x, uFun(x), type = "l", lwd = 3)
+    lines(x, x, lty = 2)
+    title("utility-funktion u(x)")
+    return(sum(p * u(c)))
 }

@@ -2,7 +2,8 @@
 #' @export
 
 
-prospectTheory <- function (p, k, vFun = NULL, wFun = NULL, plot = F) 
+prospectTheory <- function (c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100), vFun = NULL, 
+    wFun = NULL, plot = T) 
 {
     valueFunctionPN = function(x) {
         v = x^0.88
@@ -26,16 +27,21 @@ prospectTheory <- function (p, k, vFun = NULL, wFun = NULL, plot = F)
         return(w)
     }
     if (is.null(vFun)) 
-        v = valueFunctionPN
+        vFun = valueFunctionPN
     v = vFun
     if (is.null(wFun)) 
-        w = weightingFunction
+        wFun = weightingFunction
     w = wFun
     if (plot) {
+        par(mfrow = c(1, 2))
         x <- seq(-1, 1, length = 100)
-        plot(x, vFun(x))
-        lines(x, x)
-        title("Wertfunktion v(x) der PT")
+        plot(x, vFun(x), type = "l", lwd = 3)
+        lines(x, x, lty = 2)
+        title("value-funktion v(x)")
+        x <- seq(0, 1, length = 100)
+        plot(x, wFun(x), type = "l", lwd = 3)
+        lines(x, x, lty = 2)
+        title("weight-funktion w(x)")
     }
-    return(sum(w(p) * v(k)))
+    return(sum(w(p) * v(c)))
 }

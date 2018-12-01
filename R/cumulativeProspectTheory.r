@@ -2,8 +2,8 @@
 #' @export
 
 
-cumulativeProspectTheory <- function (p = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6), k = c(-5, -3, 
-    -1, 2, 4, 6), vFun = NULL, w1Fun = NULL, w2Fun = NULL) 
+cumulativeProspectTheory <- function (c = 2^(seq(1, 100) - 1), p = 1/2^seq(1, 100), vFun = NULL, 
+    w1Fun = NULL, w2Fun = NULL, plot = T) 
 {
     valueFunctionPN = function(x) {
         v = x^0.88
@@ -39,7 +39,7 @@ cumulativeProspectTheory <- function (p = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6), k = c
     if (is.null(w2Fun)) 
         w2Fun = weightingFunctionN
     w2 = w2Fun
-    d = data.frame(p, k)
+    d = data.frame(p, c)
     d = d[order(d[, 2]), ]
     d2 = d
     posExist = 0
@@ -76,5 +76,20 @@ cumulativeProspectTheory <- function (p = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6), k = c
         }
     d
     d2
+    if (plot) {
+        par(mfrow = c(2, 2))
+        x <- seq(0, 1, length = 100)
+        plot(x, w1Fun(x), type = "l", lwd = 3)
+        lines(x, x, lty = 2)
+        title("weight-funktion w1(x)")
+        x <- seq(0, 1, length = 100)
+        plot(x, w2Fun(x), type = "l", lwd = 3)
+        lines(x, x, lty = 2)
+        title("weight-funktion w2(x)")
+        x <- seq(-1, 1, length = 100)
+        plot(x, vFun(x), type = "l", lwd = 3)
+        lines(x, x, lty = 2)
+        title("value-funktion v(x)")
+    }
     return(sum(d2[, 1] * d2[, 2]))
 }
