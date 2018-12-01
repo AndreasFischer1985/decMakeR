@@ -4,7 +4,8 @@
 \alias{compare.decisions}
 \title{Function compare.decisions}
 \usage{
-compare.decisions(m = NULL, maxi = 20, goal = 1, extended = F)
+compare.decisions(c1 = 2^(seq(1, 100) - 1), p1 = 1/2^seq(1, 100),
+  c2 = 10, p2 = 1, plot = T)
 }
 \description{
 Function compare.decisions
